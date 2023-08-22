@@ -16,5 +16,28 @@ header {
 }
 
 #root {
+  padding: 0.9rem 0px;
   display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 5vw;
+  background-color: aliceblue;
+}
+
+#cv-preview {
+  height: 842px; 
+  width: 595px;
+  background-color: rgb(246, 180, 100);
+}
+
+#cv-header {
+  width: 595px;
+  height: 180px;
+  background-color: blueviolet;
+}
+
+#forms {
+  width: 595px;
+  height: 842px;
+  background-color: aquamarine;
 }
