@@ -1,15 +1,16 @@
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --show-hide-button-color: rgb(203, 206, 0);
+  --accent-color: rgb(111, 111, 111);
+  --submit-button-color: rgb(191, 0, 153);
 }
 
 body {
-  background-color: aliceblue;
   margin: 0;
 }
 
 header {
-  background-color: aliceblue;
-  border-bottom: 2px solid blue;
+  border-bottom: 2px solid var(--accent-color);
   padding: 10px;
   text-align: center;
   font-size: 1.4rem;
@@ -21,13 +22,13 @@ header {
   justify-content: center;
   width: 100%;
   gap: 5vw;
-  background-color: aliceblue;
 }
 
 #cv-preview {
   height: 842px; 
   width: 595px;
   background-color: rgb(246, 180, 100);
+  padding: 20px;
 }
 
 #cv-header {
@@ -39,5 +40,57 @@ header {
 #forms {
   width: 595px;
   height: 842px;
-  background-color: aquamarine;
+  border: 2px solid black;
+}
+
+.personal-info {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 10px;
+}
+
+h2 {
+  margin: 10px;
+}
+
+#forms input,
+#forms textarea {
+  width: 200px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid var(--accent-color);
+  margin-left: 10px;
+}
+
+#forms input[type="email"] {
+  width: 250px;
+}
+
+#forms textarea {
+  height: 20px;
+  margin-bottom: -5px;
+  width: 450px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+.submit-button {
+  border: none;
+  width: 120px;
+  height: 40px;
+  background-color: var(--submit-button-color);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.show-hide-button {
+  border: none;
+  background-color: var(--show-hide-button-color);
+  padding: 5px;
+  border-radius: 10px;
 }
