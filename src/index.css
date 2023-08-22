@@ -56,21 +56,17 @@ h2 {
 
 #forms input,
 #forms textarea {
-  width: 200px;
+  font-family: sans-serif;
+  width: 300px;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid var(--accent-color);
-  margin-left: 10px;
-}
-
-#forms input[type="email"] {
-  width: 250px;
+  margin: 15px 0px 0px 10px
 }
 
 #forms textarea {
-  height: 20px;
-  margin-bottom: -5px;
-  width: 450px;
+  height: 40px;
+  width: 300px;
 }
 
 input:focus,
@@ -93,4 +89,9 @@ textarea:focus {
   background-color: var(--show-hide-button-color);
   padding: 5px;
   border-radius: 10px;
+}
+
+.labels-inputs {
+  display: flex;
+  flex-direction: column;
 }
