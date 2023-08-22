@@ -19,6 +19,10 @@ export function PersonalInfo() {
         <input type="text" id='lastName' name='last_name'/>
       </div>
       <div className="input-div">
+        <label htmlFor="title">Title:</label>
+        <input type="text" id='title' name='title'/>
+      </div>
+      <div className="input-div">
         <label htmlFor="phoneNumber">Phone Number:</label>
         <input type="tel" id='phoneNumber' name='phone_number'/>
       </div>
