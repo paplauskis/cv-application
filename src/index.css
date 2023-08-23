@@ -37,8 +37,8 @@ header {
 #cv-header {
   width: 595px;
   height: fit-content;
-  border-bottom: 2px solid var(--accent-color);
   display: flex;
+  background-color: rgba(203, 206, 0, 0.2);
 }
 
 #forms {
@@ -132,4 +132,17 @@ textarea:focus {
 .contact-wrapper p {
   display: flex;
   align-items: center;
+}
+
+.cv-content {
+  padding: 0px 30px;
+}
+
+.cv-content > h3 {
+  margin-bottom: 10px;
+}
+
+.cv-content p {
+  margin: 10px 0px;
+  font-size: 0.8rem;
 }
