@@ -50,19 +50,35 @@ export function PersonalInfo({ setFirstName, setLastName, setTitle, setEmail, se
   );
 }
 
-export function EducationInfo() {
+export function EducationInfo({setSchool, setStudy, setStartDate, setGraduationDate}) {
   const [showMore, setShowMore] = useState('false')
   function handleShowClick() {
     setShowMore(!showMore)
+  }
+
+  function handleSchool(e) {
+    setSchool(e.target.value)
+  }
+
+  function handleStudy(e) {
+    setStudy(e.target.value)
+  }
+
+  function handleStartDate(e) {
+    setStartDate(e.target.value)
+  }
+
+  function handleGraduationDate(e) {
+    setGraduationDate(e.target.value)
   }
   return (
     <div className="education-info info-inputs">
       <h2>Education Info</h2>
       {!showMore && <div className="labels-inputs">
-        <input type="text" id='schoolName' name='school_name' placeholder='School Name'/>
-        <input type="text" id='studyTitle' name='study_title' placeholder='Title of Study (e.g. Finance)'/>
-        <input type="num" id='studyStartDate' name='study_start_date' placeholder='Start Date'/>
-        <input type="num" id='graduationDate' name='graduation_date' placeholder='Graduation Date'/>
+        <input type="text" id='schoolName' name='school_name' placeholder='School Name' onChange={handleSchool}/>
+        <input type="text" id='studyTitle' name='study_title' placeholder='Title of Study (e.g. Finance)' onChange={handleStudy}/>
+        <input type="num" id='studyStartDate' name='study_start_date' placeholder='Start Date' onChange={handleStartDate}/>
+        <input type="num" id='graduationDate' name='graduation_date' placeholder='Graduation Date' onChange={handleGraduationDate}/>
         <div className="button-div">
           <button type='submit' className='submit-button submit-experience-info'>Submit</button>
           <button className="add-button">Add</button>
@@ -73,20 +89,40 @@ export function EducationInfo() {
   )
 }
 
-export function ExperienceInfo() {
+export function ExperienceInfo({setCompany, setPosition, setResponsibilities, setWorkStart, setWorkEnd}) {
   const [showMore, setShowMore] = useState('false')
   function handleShowClick() {
     setShowMore(!showMore)
+  }
+
+  function handleCompany(e) {
+    setCompany(e.target.value)
+  }
+
+  function handlePosition(e) {
+    setPosition(e.target.value)
+  }
+
+  function handleResponsibilities(e) {
+    setResponsibilities(e.target.value)
+  }
+
+  function handleWorkStart(e) {
+    setWorkStart(e.target.value)
+  }
+
+  function handleWorkEnd(e) {
+    setWorkEnd(e.target.value)
   }
   return (
     <div className="experience-info info-inputs">
       <h2>Experience</h2>
       {!showMore && <div className="labels-inputs">
-        <input type="text" id='companyName' name='company_name' placeholder='Company Name'/>
-        <input type="text" id='positionTitle' name='position_title' placeholder='Position Title'/>
-        <textarea name="responsibilities" id="responsibilities" cols="30" rows="10" placeholder='Main Responsibilities'></textarea>
-        <input type="num" id='startDate' name='start_date' placeholder='Started Working'/>
-        <input type="num" id='endDate' name='end_date' placeholder='Stopped Working'/>
+        <input type="text" id='companyName' name='company_name' placeholder='Company Name'onChange={handleCompany}/>
+        <input type="text" id='positionTitle' name='position_title' placeholder='Position Title' onChange={handlePosition}/>
+        <textarea name="responsibilities" id="responsibilities" cols="30" rows="10" placeholder='Main Responsibilities' onChange={handleResponsibilities}></textarea>
+        <input type="num" id='startDate' name='start_date' placeholder='Started Working' onChange={handleWorkStart}/>
+        <input type="num" id='endDate' name='end_date' placeholder='Stopped Working' onChange={handleWorkEnd}/>
         <div className="button-div">
           <button type='submit' className='submit-button submit-experience-info' >Submit</button>
           <button className="add-button">Add</button>
@@ -104,6 +140,15 @@ export function Container() {
   const [email, setEmail] = useState('')
   const [phoneNumber, setPhoneNumber] = useState('')
   const [about, setAbout] = useState('')
+  const [school, setSchool] = useState('')
+  const [study, setStudy] = useState('')
+  const [startDate, setStartDate] = useState('')
+  const [graduationDate, setGraduationDate] = useState('')
+  const [company, setCompany] = useState('')
+  const [position, setPosition] = useState('')
+  const [responsibilities, setResponsibilities] = useState('')
+  const [workStart, setWorkStart] = useState('')
+  const [workEnd, setWorkEnd] = useState('')
   return (
     <>
       <div id="forms">
@@ -115,8 +160,19 @@ export function Container() {
         setPhoneNumber={setPhoneNumber}
         setAbout={setAbout}
         />
-        <EducationInfo />
-        <ExperienceInfo />
+        <EducationInfo 
+        setSchool={setSchool}
+        setStudy={setStudy}
+        setStartDate={setStartDate}
+        setGraduationDate={setGraduationDate}
+        />
+        <ExperienceInfo 
+        setCompany={setCompany}
+        setPosition={setPosition}
+        setResponsibilities={setResponsibilities}
+        setWorkStart={setWorkStart}
+        setWorkEnd={setWorkEnd}
+        />
       </div>
       <div id="cv-preview">
         <div id="cv-header">
@@ -132,6 +188,17 @@ export function Container() {
         <div className="cv-content">
           <h3>About</h3>
           <p>{about}</p>
+          <h3>Education</h3>
+          <p><strong>School Name:</strong>{' ' + school}</p>
+          <p><strong>Title of Study:</strong>{' ' + study}</p>
+          <p><strong>Start Date:</strong>{' ' + startDate}</p>
+          <p><strong>Graduation Date:</strong>{' ' + graduationDate}</p>
+          <h3>Experience</h3>
+          <p><strong>Company Name:</strong>{' ' + company}</p>
+          <p><strong>Position:</strong>{' ' + position}</p>
+          <p><strong>Main Responsibilities:</strong>{' ' + responsibilities}</p>
+          <p><strong>Started Working:</strong>{' ' + workStart}</p>
+          <p><strong>Stopped Working:</strong>{' ' + workEnd}</p>
         </div>
       </div>
     </>
