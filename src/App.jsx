@@ -43,12 +43,34 @@ export function EducationInfo() {
   )
 }
 
+export function ExperienceInfo() {
+  const [showMore, setShowMore] = useState('false')
+  function handleShowClick() {
+    setShowMore(!showMore)
+  }
+  return (
+    <div className="experience-info info-inputs">
+      <h2>Experience</h2>
+      {showMore && <div className="labels-inputs">
+        <input type="text" id='companyName' name='company_name' placeholder='Company Name'/>
+        <input type="text" id='positionTitle' name='position_title' placeholder='Position Title'/>
+        <textarea name="responsibilities" id="responsibilities" cols="30" rows="10" placeholder='Main Responsibilities'></textarea>
+        <input type="num" id='startDate' name='start_date' placeholder='Started Working'/>
+        <input type="num" id='endDate' name='end_date' placeholder='Stopped Working'/>
+      <button type='submit' className='submit-button submit-experience-info'>Submit</button>
+      </div>}
+      <button className='show-hide-button' onClick={handleShowClick}>{showMore ? 'Hide' : 'Show'}</button>
+    </div>
+  )
+}
+
 export function Container() {
   return (
     <>
       <div id="forms">
         <PersonalInfo />
         <EducationInfo />
+        <ExperienceInfo />
       </div>
       <div id="cv-preview">
         <div id="cv-header"></div>
