@@ -129,6 +129,10 @@ export function Container() {
             <p><img src="../public/telephone.png" alt="phone icon" />{phoneNumber}</p>
           </div>
         </div>
+        <div className="cv-content">
+          <h3>About</h3>
+          <p>{about}</p>
+        </div>
       </div>
     </>
   )
