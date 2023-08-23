@@ -36,7 +36,7 @@ header {
 
 #cv-header {
   width: 595px;
-  height: 130px;
+  height: fit-content;
   border-bottom: 2px solid var(--accent-color);
   display: flex;
 }
@@ -120,10 +120,16 @@ textarea:focus {
 }
 
 .contact-wrapper {
-  gap: 10px;
   padding-top: 20px;
+  font-size: 0.8rem;
 }
 
 .contact-wrapper img {
   width: 20px;
+  margin-right: 5px;
+}
+
+.contact-wrapper p {
+  display: flex;
+  align-items: center;
 }
