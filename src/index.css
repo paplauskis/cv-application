@@ -22,19 +22,23 @@ header {
   justify-content: center;
   width: 100%;
   gap: 5vw;
+  /* height: calc(190vh - 45px); */
 }
 
 #cv-preview {
   height: 842px; 
   width: 595px;
-  background-color: rgb(246, 180, 100);
-  padding: 20px;
+  border: 2px solid black;
+  /* /* top: 1rem; */
+  /* position: fixed; 
+  right: 10%; */
 }
 
 #cv-header {
   width: 595px;
-  height: 180px;
-  background-color: blueviolet;
+  height: 130px;
+  border-bottom: 2px solid var(--accent-color);
+  display: flex;
 }
 
 #forms {
@@ -43,15 +47,15 @@ header {
   border: 2px solid black;
 }
 
-.personal-info {
+.info-inputs {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 40px;
   gap: 10px;
 }
 
 h2 {
-  margin: 10px;
+  margin: 10px 0px;
 }
 
 #forms input,
@@ -61,7 +65,7 @@ h2 {
   background-color: transparent;
   border: none;
   border-bottom: 2px solid var(--accent-color);
-  margin: 15px 0px 0px 10px
+  margin: 15px 0px 0px 0px
 }
 
 #forms textarea {
@@ -94,4 +98,32 @@ textarea:focus {
 .labels-inputs {
   display: flex;
   flex-direction: column;
+}
+
+.add-button {
+  border: none;
+  width: 120px;
+  height: 40px;
+  background-color: rgb(0, 108, 191);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.button-div {
+  display: flex;
+  gap: 20px;
+}
+
+.full-name, 
+.title {
+  margin: 20px 30px;
+}
+
+.contact-wrapper {
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.contact-wrapper img {
+  width: 20px;
 }
