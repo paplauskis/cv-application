@@ -9,6 +9,8 @@ export function PersonalInfo({ setFirstName, setLastName, setTitle, setEmail, se
     setShowMore(!showMore)
   }
 
+  
+
   return (
     <div className="personal-info info-inputs">
       <h2>Personal Info</h2>
@@ -26,6 +28,28 @@ export function PersonalInfo({ setFirstName, setLastName, setTitle, setEmail, se
   );
 }
 
+function addMoreInputs() {
+  const inputs = document.querySelector('.input-div')
+  console.log(inputs)
+  inputs.append(<EducationInputs />)
+}
+
+function EducationInputs ({ setSchool, setStudy, setStartDate, setGraduationDate }) {
+  
+  return (
+    <>
+        <input type="text" id='schoolName' name='school_name' placeholder='School Name' onChange={(e) => setSchool(e.target.value)}/>
+        <input type="text" id='studyTitle' name='study_title' placeholder='Title of Study (e.g. Finance)' onChange={(e) => setStudy(e.target.value)}/>
+        <input type="num" id='studyStartDate' name='study_start_date' placeholder='Start Date' onChange={(e) => setStartDate(e.target.value)}/>
+        <input type="num" id='graduationDate' name='graduation_date' placeholder='Graduation Date' onChange={(e) => setGraduationDate(e.target.value)}/>
+        <div className="button-div">
+          <button type='submit' className='submit-button submit-experience-info'>Submit</button>
+          <button className="add-button" onClick={() => addMoreInputs({ setSchool, setStudy, setStartDate, setGraduationDate })}>Add</button>
+        </div> 
+      </>
+  )
+}
+
 export function EducationInfo({setSchool, setStudy, setStartDate, setGraduationDate}) {
   const [showMore, setShowMore] = useState('false')
   function handleShowClick() {
@@ -35,16 +59,7 @@ export function EducationInfo({setSchool, setStudy, setStartDate, setGraduationD
   return (
     <div className="education-info info-inputs">
       <h2>Education Info</h2>
-      {!showMore && <div className="labels-inputs">
-        <input type="text" id='schoolName' name='school_name' placeholder='School Name' onChange={(e) => setSchool(e.target.value)}/>
-        <input type="text" id='studyTitle' name='study_title' placeholder='Title of Study (e.g. Finance)' onChange={(e) => setStudy(e.target.value)}/>
-        <input type="num" id='studyStartDate' name='study_start_date' placeholder='Start Date' onChange={(e) => setStartDate(e.target.value)}/>
-        <input type="num" id='graduationDate' name='graduation_date' placeholder='Graduation Date' onChange={(e) => setGraduationDate(e.target.value)}/>
-        <div className="button-div">
-          <button type='submit' className='submit-button submit-experience-info'>Submit</button>
-          <button className="add-button">Add</button>
-        </div> 
-      </div>}
+     {!showMore && <div className="input-div"><EducationInputs setSchool={setSchool} setStudy={setStudy} setStartDate={setStartDate} setGraduationDate={setGraduationDate} /></div> }
       <button className='show-hide-button' onClick={handleShowClick}>{!showMore ? 'Hide' : 'Show'}</button>
     </div>
   )
@@ -135,7 +150,7 @@ export function Container() {
           position={position}
           responsibilities={responsibilities}
           workStart={workStart}
-          workEnd={workStart} />
+          workEnd={workEnd} />
         </div>
       </div>
     </>
