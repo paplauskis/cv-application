@@ -28,14 +28,8 @@ export function PersonalInfo({ setFirstName, setLastName, setTitle, setEmail, se
   );
 }
 
-function addMoreInputs() {
-  const inputs = document.querySelector('.input-div')
-  console.log(inputs)
-  inputs.append(<EducationInputs />)
-}
-
 function EducationInputs ({ setSchool, setStudy, setStartDate, setGraduationDate }) {
-  
+
   return (
     <>
         <input type="text" id='schoolName' name='school_name' placeholder='School Name' onChange={(e) => setSchool(e.target.value)}/>
@@ -44,14 +38,24 @@ function EducationInputs ({ setSchool, setStudy, setStartDate, setGraduationDate
         <input type="num" id='graduationDate' name='graduation_date' placeholder='Graduation Date' onChange={(e) => setGraduationDate(e.target.value)}/>
         <div className="button-div">
           <button type='submit' className='submit-button submit-experience-info'>Submit</button>
-          <button className="add-button" onClick={() => addMoreInputs({ setSchool, setStudy, setStartDate, setGraduationDate })}>Add</button>
         </div> 
       </>
   )
 }
+// addInputFields adds space for text on CV
+function addInputFields() {
+  
+}
 
 export function EducationInfo({setSchool, setStudy, setStartDate, setGraduationDate}) {
   const [showMore, setShowMore] = useState('false')
+  const [inputCount, setInputCount] = useState(1)  
+
+  function addMoreInputs() {
+    setInputCount(inputCount + 1)
+    addInputFields()
+  }
+
   function handleShowClick() {
     setShowMore(!showMore)
   }
@@ -59,7 +63,18 @@ export function EducationInfo({setSchool, setStudy, setStartDate, setGraduationD
   return (
     <div className="education-info info-inputs">
       <h2>Education Info</h2>
-     {!showMore && <div className="input-div"><EducationInputs setSchool={setSchool} setStudy={setStudy} setStartDate={setStartDate} setGraduationDate={setGraduationDate} /></div> }
+     {!showMore && <div className="input-div">
+      {Array.from({length: inputCount}, (_, index) => (
+        <EducationInputs 
+          key={index}
+          setSchool={setSchool}
+          setStudy={setStudy}
+          setStartDate={setStartDate}
+          setGraduationDate={setGraduationDate}
+        />
+      ))}
+      <button className="add-button" onClick={() => addMoreInputs({ setSchool, setStudy, setStartDate, setGraduationDate })}>Add</button>
+      </div> }
       <button className='show-hide-button' onClick={handleShowClick}>{!showMore ? 'Hide' : 'Show'}</button>
     </div>
   )
