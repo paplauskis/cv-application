@@ -26,7 +26,7 @@ header {
 }
 
 #cv-preview {
-  height: 842px; 
+  height: minmax(842px, fit-content); 
   width: 595px;
   border: 2px solid black;
   /* /* top: 1rem; */
@@ -43,7 +43,7 @@ header {
 
 #forms {
   width: 595px;
-  height: 842px;
+  height: minmax(842px, fit-content);
   border: 2px solid black;
 }
 
