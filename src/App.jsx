@@ -1,14 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-export function PersonalInfo({
-  setFirstName,
-  setLastName,
-  setTitle,
-  setEmail,
-  setPhoneNumber,
-  setAbout,
-}) {
+export function PersonalInfo(props) {
   const [showMore, setShowMore] = useState('true')
 
   function handleShowClick() {
@@ -25,35 +18,35 @@ export function PersonalInfo({
             id="firstName"
             name="first_name"
             placeholder="First Name"
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={(e) => props.setFirstName(e.target.value)}
           />
           <input
             type="text"
             id="lastName"
             name="last_name"
             placeholder="Last Name"
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={(e) => props.setLastName(e.target.value)}
           />
           <input
             type="text"
             id="title"
             name="title"
             placeholder="Title"
-            onChange={(e) => setTitle(e.target.value)}
+            onChange={(e) => props.setTitle(e.target.value)}
           />
           <input
             type="tel"
             id="phoneNumber"
             name="phone_number"
             placeholder="Phone Number"
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e) => props.setPhoneNumber(e.target.value)}
           />
           <input
             type="email"
             id="email"
             name="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => props.setEmail(e.target.value)}
           />
           <textarea
             name="about"
@@ -61,7 +54,7 @@ export function PersonalInfo({
             cols="30"
             rows="10"
             placeholder="About"
-            onChange={(e) => setAbout(e.target.value)}
+            onChange={(e) => props.setAbout(e.target.value)}
           ></textarea>
           <button type="submit" className="submit-button submit-personal-info">
             Submit
@@ -75,10 +68,7 @@ export function PersonalInfo({
   )
 }
 
-function EducationInputs(
-  { setSchool, setStudy, setStartDate, setGraduationDate },
-  index
-) {
+function EducationInputs(props, index) {
   return (
     <>
       <input
@@ -86,28 +76,28 @@ function EducationInputs(
         id="schoolName"
         name="school_name"
         placeholder="School Name"
-        onChange={(e) => setSchool(e.target.value)}
+        onChange={(e) => props.setSchool(e.target.value)}
       />
       <input
         type="text"
         id="studyTitle"
         name="study_title"
         placeholder="Title of Study (e.g. Finance)"
-        onChange={(e) => setStudy(e.target.value)}
+        onChange={(e) => props.setStudy(e.target.value)}
       />
       <input
         type="num"
         id="studyStartDate"
         name="study_start_date"
         placeholder="Start Date"
-        onChange={(e) => setStartDate(e.target.value)}
+        onChange={(e) => props.setStartDate(e.target.value)}
       />
       <input
         type="num"
         id="graduationDate"
         name="graduation_date"
         placeholder="Graduation Date"
-        onChange={(e) => setGraduationDate(e.target.value)}
+        onChange={(e) => props.setGraduationDate(e.target.value)}
       />
       <div className="button-div">
         <button type="submit" className="submit-button submit-experience-info">
@@ -172,13 +162,7 @@ export function EducationInfo({
   )
 }
 
-export function ExperienceInfo({
-  setCompany,
-  setPosition,
-  setResponsibilities,
-  setWorkStart,
-  setWorkEnd,
-}) {
+export function ExperienceInfo(props) {
   const [showMore, setShowMore] = useState('false')
 
   function handleShowClick() {
@@ -195,14 +179,14 @@ export function ExperienceInfo({
             id="companyName"
             name="company_name"
             placeholder="Company Name"
-            onChange={(e) => setCompany(e.target.value)}
+            onChange={(e) => props.setCompany(e.target.value)}
           />
           <input
             type="text"
             id="positionTitle"
             name="position_title"
             placeholder="Position Title"
-            onChange={(e) => setPosition(e.target.value)}
+            onChange={(e) => props.setPosition(e.target.value)}
           />
           <textarea
             name="responsibilities"
@@ -210,21 +194,21 @@ export function ExperienceInfo({
             cols="30"
             rows="10"
             placeholder="Main Responsibilities"
-            onChange={(e) => setResponsibilities(e.target.value)}
+            onChange={(e) => props.setResponsibilities(e.target.value)}
           ></textarea>
           <input
             type="num"
             id="startDate"
             name="start_date"
             placeholder="Started Working"
-            onChange={(e) => setWorkStart(e.target.value)}
+            onChange={(e) => props.setWorkStart(e.target.value)}
           />
           <input
             type="num"
             id="endDate"
             name="end_date"
             placeholder="Stopped Working"
-            onChange={(e) => setWorkEnd(e.target.value)}
+            onChange={(e) => props.setWorkEnd(e.target.value)}
           />
           <div className="button-div">
             <button
@@ -320,23 +304,23 @@ export function Container() {
   )
 }
 
-function CvHeader({ firstName, lastName, title, email, phoneNumber }) {
+function CvHeader(props) {
   return (
     <div id="cv-header">
       <div className="name-title-wrapper">
-        <h2 className="full-name">{firstName + ' ' + lastName}</h2>
+        <h2 className="full-name">{props.firstName + ' ' + props.lastName}</h2>
         <h2 className="title">
-          <em>{title}</em>
+          <em>{props.title}</em>
         </h2>
       </div>
       <div className="contact-wrapper">
         <p>
           <img src="../public/mail.png" alt="email icon" />
-          {email}
+          {props.email}
         </p>
         <p>
           <img src="../public/telephone.png" alt="phone icon" />
-          {phoneNumber}
+          {props.phoneNumber}
         </p>
       </div>
     </div>
@@ -352,57 +336,51 @@ function CvAbout({ about }) {
   )
 }
 
-function CvEducation({ school, study, startDate, graduationDate }) {
+function CvEducation(props) {
   return (
     <>
       <p>
         <strong>School Name:</strong>
-        {' ' + school}
+        {' ' + props.school}
       </p>
       <p>
         <strong>Title of Study:</strong>
-        {' ' + study}
+        {' ' + props.study}
       </p>
       <p>
         <strong>Start Date:</strong>
-        {' ' + startDate}
+        {' ' + props.startDate}
       </p>
       <p>
         <strong>Graduation Date:</strong>
-        {' ' + graduationDate}
+        {' ' + props.graduationDate}
       </p>
     </>
   )
 }
 
-function CvExperience({
-  company,
-  position,
-  responsibilities,
-  workStart,
-  workEnd,
-}) {
+function CvExperience(props) {
   return (
     <>
       <p>
         <strong>Company Name:</strong>
-        {' ' + company}
+        {' ' + props.company}
       </p>
       <p>
         <strong>Position:</strong>
-        {' ' + position}
+        {' ' + props.position}
       </p>
       <p>
         <strong>Main Responsibilities:</strong>
-        {' ' + responsibilities}
+        {' ' + props.responsibilities}
       </p>
       <p>
         <strong>Started Working:</strong>
-        {' ' + workStart}
+        {' ' + props.workStart}
       </p>
       <p>
         <strong>Stopped Working:</strong>
-        {' ' + workEnd}
+        {' ' + props.workEnd}
       </p>
     </>
   )
